@@ -1,0 +1,657 @@
+		body {
+			font-family: Helvetica;
+			background-color: black;
+			color: white;
+			margin: 30px 30px 30px 30px;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		h1, h4 {
+			color: gold;
+		}
+
+		/* navigation bar colour */
+		.navbar {
+			position: sticky;
+			top: 0;
+			background-color: black;
+			color: white;
+			overflow: hidden;
+		}
+
+		/* navigation bar text */
+		.navbar a {
+			display: flex;
+			float: right;
+			font-size: 15px;
+			color: white;
+			text-align: center;
+			padding: 5px;
+			height: 60px;
+			width: 85px;
+			text-decoration: none;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.navbar a:hover {
+			background-color: gold;
+			color: black;
+		}
+
+		/* Button used to open the contact form */
+		.open-button {
+			display: flex;
+			float: right;
+			font-size: 15px;
+			color: white;
+			height: 60px;
+			width: 85px;
+			text-align: center;
+			align-items: center;
+			justify-content: center;
+			padding: 15px;
+			text-decoration: none;
+			background: none;
+			border: none;
+		}
+
+		.open-button:hover {
+			background-color: gold;
+			color: black;
+		}
+
+		/* The popup form - hidden by default */
+		.form-popup {
+			display: none;
+			position: fixed;
+			top: 60px;
+			right: 30px;
+			border: 1px solid lightgrey;
+		}
+
+		/* Add styles to customer login container */
+		.form-container {
+			max-width: 350px;
+			padding: 20px;
+			background-color: white;
+			color: black;
+		}
+
+		/* Add styles to staff login container */
+		.staff-container {
+			max-width: 350px;
+			padding: 20px;
+			background-color: black;
+			color: white;
+		}
+
+		.signUp-container {
+			max-width: 350px;
+			padding: 20px;
+			background-color: white;
+			color: black;
+		}
+
+		/* Full-width input fields */
+		.form-container input[type=text],
+		.form-container input[type=password] {
+			width: 100%;
+			padding: 15px;
+			margin: 10px 0px 20px 0px;
+			border: 1px solid black;
+		}
+
+		.staff-container input[type=text],
+		.staff-container input[type=password] {
+			width: 100%;
+			padding: 15px;
+			margin: 10px 0px 20px 0px;
+			border: 1px solid black;
+		}
+
+		.signUp-container input[type=text],
+		.signUp-container input[type=password] {
+			width: 100%;
+			padding: 15px;
+			margin: 10px 0px 20px 0px;
+			border: 1px solid black;
+		}
+
+		/* Set a style for the login button */
+		.form-container .btn {
+			background-color: gold;
+			color: black;
+			padding: 16px 20px;
+			border: none;
+			width: 40%;
+			margin: 0px 0px 10px 20px;
+		}
+
+		/* Add a background color to the cancel button */
+		.form-container .cancel {
+			background-color: white;
+			border: 1px solid black;
+		}
+
+		#CustomerError {
+			color: red;
+		}
+
+		/* Style for staff form */
+		.staff-container .btn {
+			background-color: gold;
+			color: black;
+			padding: 16px 20px;
+			width: 40%;
+			margin: 0px 0px 10px 20px;
+		}
+
+		.form-container .staff {
+			border: none;
+			background-color: white;
+			margin: 0px;
+		}
+
+		.staff-container .cancel {
+			background-color: white;
+		}
+
+		.staff-container .staff {
+			border: none;
+			background-color: white;
+			margin: 0px;
+		}
+
+		#StaffError {
+			color: red;
+		}
+
+		/* Style for sign up form */
+		.signUp-container .btn {
+			background-color: gold;
+			color: black;
+			border: none;
+			padding: 16px 20px;
+			width: 40%;
+			margin: 0px 0px 10px 20px;
+		}
+
+		.signUp-container .signUp {
+			border: none;
+			background-color: white;
+			margin: 0px;
+		}
+
+		.signUp-container .cancel {
+			background-color: white;
+			border: 1px solid black;
+		}
+
+		.signUp-container .signUp {
+			border: none;
+			background-color: white;
+			margin: 0px;
+		}
+
+		#accountError {
+			color: red;
+		}
+
+		/* Style for logo table */
+		.logo table {
+			width: 100%;
+			text-align: center;
+			padding: 10px;
+		}
+
+		.logo td {
+			text-align: center;
+		}
+
+		.logo img {
+			width: 150px;
+			height: 150px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		/* Style for car photo */
+		.row {
+			display: flex;
+			flex-wrap: wrap;
+			padding: 0 4px;
+		}
+
+		.column {
+			flex: 30%;
+			max-width: 30%;
+			padding: 0 5px;
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		.column img {
+			margin-top: 8px;
+			vertical-align: middle;
+			width: 100%;
+			border-radius: 8px;
+		}
+
+		.column input {
+			text-align: center;
+		}
+
+		.column h3 {
+			text-align: center;
+		}
+
+		/* Responsive layout */
+		@media screen and (max-width: 800px) {
+			.column {
+				flex: 40%;
+				max-width: 40%;
+			}
+		}
+
+		/* Responsive layout */
+		@media screen and (max-width: 600px) {
+			.column {
+				flex: 100%;
+				max-width: 100%;
+			}
+		}
+
+		/* Submit Button */
+		.submitButton {
+			text-align: center;
+			font-size: 15px;
+			border-color: white;
+			border-width: thick;
+			color: gold;
+			padding: 15px;
+			text-decoration: none;
+			background-color: black;
+			border-radius: 4px;
+			display: block;
+			margin: 0 auto;
+		}
+
+		.submitButton:hover {
+			border-color: gold;
+			border-width: thick;
+			color: white;
+		}
+
+		/* checkbox colour */
+		input[type=checkbox] {
+			color: grey;
+		}
+
+		/* centralise the slideshow photo */
+		.center {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 80%;
+		}
+
+		/* Get Started Button used to open the contact form */
+		.getStartedButton {
+			text-align: center;
+			font-size: 15px;
+			border-color: white;
+			border-width: thick;
+			color: white;
+			padding: 15px;
+			text-decoration: none;
+			background-color: black;
+		}
+
+		.getStartedButton:hover {
+			border-color: gold;
+			border-width: thick;
+		}
+
+		/* FAQ style */
+		.faq th {
+			width: 50%;
+			text-align: left;
+			vertical-align: top;
+			padding: 10px;
+			color: gold;
+		}
+
+		.faq td {
+			width: 50%;
+			text-align: left;
+			vertical-align: top;
+			padding: 10px;
+		}
+
+		footer {
+			text-align: center;
+			padding: 3px;
+			color: white;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+		}
+
+		.car-details h3 {
+			color: white;
+
+		}
+
+		.car-details p {
+			color: white;
+			font-size: 0.9rem;
+			line-height: 1.6;
+			margin: 0;
+		}
+
+		/* Vehicle form */
+		.vehicle-container {
+			background-color: white;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		.vehicle-container {
+			color: black;
+		}
+
+		.vehicle-container label {
+			color: black;
+		}
+
+		/* Types of cars */
+		.journey table {
+			width: 100%;
+			height: 300px;
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+
+		.journey th {
+			text-align: left;
+			padding: 12px;
+			color: black;
+		}
+
+		.journey td {
+			width: 33.33%;
+			text-align: left;
+			padding: 10px;
+		}
+
+		.journey {
+			margin: 0 auto;
+			width: 80%;
+			background-color: #f2f2f2;
+			padding: 20px;
+			border-radius: 10px;
+		}
+
+		table {
+			width: 100%;
+		}
+
+		th,
+		td {
+			padding: 10px;
+			text-align: left;
+		}
+
+		input[type="text"],
+		input[type="tel"],
+		input[type="date"],
+		input[type="time"],
+		input[type="number"],
+		select {
+			width: 100%;
+			padding: 8px;
+			margin: 4px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		input[type="radio"] {
+			margin-right: 10px;
+		}
+
+		.privacy-button {
+			background-color: transparent;
+			border: none;
+			color: blue;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+
+		.privacy-button:hover {
+			color: darkblue;
+		}
+
+		.privacy-popup {
+			display: none;
+			position: fixed;
+			z-index: 999;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 60%;
+			max-width: 600px;
+			background-color: #f2f2f2;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.privacy-container {
+			padding: 20px;
+		}
+
+		.privacy-popup h3 {
+			margin-top: 0;
+		}
+
+		.privacy-popup ul {
+			list-style-type: none;
+			padding: 0;
+		}
+
+		.privacy-popup li {
+			margin-bottom: 10px;
+		}
+
+		.privacy-popup .btn {
+			background-color: #f44336;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		.privacy-popup .btn.cancel {
+			float: right;
+		}
+
+		.privacy-popup .btn.cancel:hover,
+		.privacy-popup .btn.close:hover {
+			background-color: #d32f2f;
+		}
+
+		/* Get Payment Button used to open the payment slip */
+		.getPaymentButton {
+			display: block;
+			margin: 0 auto;
+			text-align: center;
+			font-size: 15px;
+			border-color: white;
+			border-width: thick;
+			color: gold;
+			padding: 15px;
+			text-decoration: none;
+			background-color: black;
+			border-radius: 4px;
+		}
+
+		.getPaymentButton:hover {
+			border-color: gold;
+			border-width: thick;
+			color: white;
+		}
+
+		/* Transaction table design */
+		.transaction table {
+			width: 100%;
+			height: 300px;
+			border: 1px solid black;
+			background-color: white;
+			color: black;
+			border-collapse: collapse;
+		}
+
+		.transaction th {
+			text-align: left;
+			padding: 10px;
+			width: 20%;
+			border: 1px solid black;
+		}
+
+		.transaction td {
+			width: 20%;
+			text-align: left;
+			padding: 10px;
+			border: 1px solid black;
+		}
+
+		/* Invoice popup hidden */
+		.invoicePopup {
+			display: none;
+			padding: 10px;
+			width: 100%;
+			border-radius: 10px;
+		}
+
+		/* Invoice table */
+		.invoice td,
+		.invoice th {
+			width: 33.3%;
+		}
+
+		.invoicePrice td,
+		.invoicePrice th {
+			text-align: left;
+			width: 33.3%;
+		}
+
+		#status {
+			color: green;
+		}
+
+		#price {
+			color: green;
+		}
+
+		/* Invoice popup hidden */
+		.paymentPopup {
+			display: none;
+			padding: 10px;
+			width: 100%;
+		}
+
+		.paymentButton {
+			border-radius: 4px;
+			background-color: gold;
+			border: none;
+			color: black;
+			text-align: center;
+			font-size: 20px;
+			padding: 20px;
+			width: 150px;
+		}
+
+		.paymentPopup {
+			/* Add styles for the popup container */
+			background-color: #f9f9f9;
+			padding: 20px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		}
+
+		.verification-container {
+			width: 80%;
+			/* Set the width to 80% */
+			margin: auto;
+			/* Center the container */
+		}
+
+		.title {
+			font-size: 18px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		.subtitle {
+			font-size: 14px;
+			text-align: center;
+			color: #666;
+			margin-bottom: 20px;
+		}
+
+		.input-container {
+			margin-bottom: 20px;
+		}
+
+		.label {
+			display: block;
+			font-size: 16px;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		.otp-input {
+			width: 100%;
+			padding: 8px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			font-size: 16px;
+		}
+
+		.button-container {
+			text-align: center;
+		}
+		
+		input[type=checkbox] {
+			color: grey;
+		}
+
+				/* Get Payment Button used to open the payment slip */
+				.Button {
+					text-align: center;
+					font-size: 15px;
+					border-color: gold;
+					border-width: thick;
+					color: white;
+					padding: 15px;
+					text-decoration: none;
+					background-color: black;
+				}
+		
+				.Button:hover {
+					border-color: white;
+					border-width: thick;
+					color: gold;
+				}

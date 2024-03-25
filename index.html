@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+	<meta charset="utf-8">
+	<title>AZoom Car Rental</title>
+	<link rel="stylesheet" href="AZoomStyles.css">
+</head>
+
+<body>
+	<script src="AZoomScript.js"></script>
+	<!-- Navigation bar -->
+	<h1 style="text-align:center;" id="home">Welcome to AZoom Car Rental</h1>
+	<hr style="background-color:black">
+	<div class="navbar">
+		<button class="open-button" onclick="openSignUp()">Sign Up</button>
+		<button class="open-button" onclick="openLoginForm()">Login</button>
+		<a href="#faq">FAQ</a>
+		<a href="#contact">Contact</a>
+		<a href="#aboutUs">About Us</a>
+		<a href="#cars">Cars</a>
+		<a href="#home">
+			<img src="image/AZoom.jpg" alt="AZoom" style="width:75px;height:50px;">
+		</a>
+	</div>
+
+	<!-- CUSTOMER FORM -->
+	<div class="form-popup" id="myForm" method="post">
+		<form action="SourceCode(customer).html" method="post"
+			onsubmit="return (checkCustomer() && checkCustomerPassword());" class="form-container">
+
+			<h1 style="color:black">Login</h1>
+
+			<label for="CustomerName"><b>Username</b></label>
+			<input type="text" id="CustomerName" placeholder="Enter Username" name="CustomerName">
+			<label for="CustomerPassword"><b>Password</b></label>
+			<input type="password" id="CustomerPassword" placeholder="Enter Password" name="CustomerPassword">
+			<span id="CustomerError"></span><br>
+			<button class="btn staff" onclick="closeForm(); openStaffForm();"><u>Staff Login</u></button>
+			<br><br>
+			<button type="submit" class="btn">Login</button>
+			<button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+		</form>
+	</div>
+
+
+	<!-- STAFF FORM -->
+	<div class="form-popup" id="staffForm">
+		<form action="SourceCode(staff).html" method="post" onsubmit="return (checkStaff() && checkStaffPassword());"
+			class="staff-container">
+				<h1>Staff Login</h1>
+			<label for="StaffName"><b>Staff Username</b></label>
+			<input type="text" id="StaffName" placeholder="Enter Username" name="StaffName">
+			<label for="StaffPassword"><b>Password</b></label>
+			<input type="password" id="StaffPassword" placeholder="Enter Password" name="StaffPassword">
+			<span id="StaffError"></span>
+
+			<br><br>
+			<button type="submit" class="btn" value="Submit">Login</button>
+			<button type="button" class="btn cancel" onclick="closeStaffForm()">Close</button>
+		</form>
+	</div>
+
+	<!-- SIGN UP FORM -->
+	<div class="form-popup" id="signUpForm">
+		<form action="SourceCode(customer).html" method="post" class="signUp-container"
+			onsubmit="return validateNewAccount()">
+			<h1 style="color:black">Sign Up</h1>
+			<label for="newName"><b>Username</b></label>
+			<input type="text" id="newName" placeholder="Enter username" name="newName">
+			Enter password
+			<input id="newPassword" type="password" placeholder="Enter password" name="newPassword">
+			<br>
+			Enter password again:
+			<input id="newPassword2" type="password" placeholder="Enter password again" name="newPassword2">
+			<span id="accountError"></span>
+			<br><br>
+			<button type="submit" class="btn" value="Submit">Sign Up</button>
+			<button type="button" class="btn cancel" onclick="closeSignUpForm()">Close</button>
+		</form>
+	</div>
+
+
+	<!-- Slideshow for the car  -->
+	<img id="photo" src="image/electricCar.png" alt="car" class="center" />
+	<script>
+		slideShow();
+	</script>
+	<br>
+
+	<!-- AZoom branding -->
+	<h1>WHY CHOOSE AZOOM?</h1>
+	<div class="logo">
+		<table>
+			<tr>
+				<td>
+					<img src="image/fast.png" alt="Fast and easy booking">
+				</td>
+				<td>
+					<img src="image/noDeposit.png" alt="No Deposit">
+				</td>
+				<td>
+					<img src="image/environment.png" alt="Environment Conscious">
+				</td>
+			</tr>
+			<br>
+			<tr>
+				<td>
+					Easy Booking
+				</td>
+				<td>
+					No Deposit
+				</td>
+				<td>
+					Environment Conscious
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="getStartedButton">
+		<button class="getStartedButton" onclick="openForm()">GET STARTED</button>
+	</div>
+
+	<!-- Type of car section -->
+	<br id="cars">
+	<br>
+	<h1>TYPE OF CARS</h1>
+	<div class="row">
+		<div class="column">
+			<img src="image/carKonaElectric.png" alt="Hyundai Kona EV">
+			<h3 style="text-align:center;">Hyundai Kona EV</h3>
+			<p style="padding-left: 80px;">
+				<strong>Price:</strong> $220/day<br>
+				<strong>Vehicle Type: </strong>SUV<br>
+				<strong>Category: </strong>Standard EV<br><br>
+
+				<strong>Capacity: </strong>5 <br>
+				<strong>Drive Range: </strong>305km<br>
+				<strong>Battery Capacity: </strong>39.2 kWh
+			</p>
+			<img src="image/carTesla.png" alt="Tesla Model 3">
+				<h3 style="text-align:center;">Tesla Model 3</h3>
+				<p style="padding-left: 80px;">
+					<strong>Price: </strong>$300/day<br>
+					<strong>Vehicle Type:</strong> Sedan<br>
+					<strong>Category: </strong>Standard EV<br><br>
+
+					<strong>Capability</strong> 5 <br>
+					<strong>Drive Range: </strong>491km<br>
+					<strong>Battery Capacity: </strong> 60kWh
+				</p>
+		</div>
+		<div class="column">
+			<img src="image/carPorsche.png" alt="Porsche Taycan">
+				<h3 style="text-align:center;">Porsche Taycan</h3>
+				<p style="padding-left: 80px;">
+					<strong>Price:</strong> $350/day<br>
+					<strong>Vehicle Type: </strong>Sports<br>
+					<strong>Category: </strong>Premium Plus EV<br><br>
+
+					<strong>Capacity: </strong>4<br>
+					<strong>Drive Range: </strong>434km<br>
+					<strong>Battery Capacity: </strong>79kWh
+				</p>
+			<img src="image/carBYD-all-new-e6.png" alt="BYD e6">
+				<h3 style="text-align:center;">BYD e6</h3>
+				<p style="padding-left: 80px;">
+					<strong>Price: </strong>$220/day<br>
+					<strong>Vehicle Type: </strong>Hatchback<br>
+					<strong>Category: </strong>Standard EV<br><br>
+
+					<strong>Capacity: </strong>5<br>
+					<strong>Drive Range: </strong>522km<br>
+					<strong>Battery Capacity: </strong>71.7kWh
+				</p>
+		</div>
+		<div class="column">
+			<img src="image/carMGZSEV.png" alt="MG ZS EV">
+				<h3 style="text-align:center;">MG ZS EV</h3>
+				<p style="padding-left: 80px;">
+					<strong>Price:</strong> $220/day<br>
+					<strong>Vehicle Type: </strong>SUV<br>
+					<strong>Category: </strong>Standard EV<br><br>
+
+					<strong>Capacity: </strong>5<br>
+					<strong>Drive Range: </strong>335km<br>
+					<strong>Battery Capacity: </strong>44.5kWh
+				</p>
+		</div>
+	</div>
+	<br>
+
+	<!-- About us section -->
+	<table style="width:100%" id="aboutUs">
+		<tr>
+			<td style="width:50%; text-align: center;">
+				<h1>
+					About AZoom Car Rental
+				</h1>
+				<p>
+					AZoom is a local car rental company that specialized in renting electric cars.<br>
+					There is a range of electric cars available for environmentally conscious customers.<br>
+					Start your journey by registering with us and rent our cars.<br>
+					Our cars are always available 24/7.<br>
+				</p>
+			</td>
+			<td style="width:50%"><img style="width:100%; height:150%;" src="image/aboutUs.png" alt="About Us">
+			</td>
+		</tr>
+	</table>
+
+	<br><br>
+
+
+	<!-- Contact US -->
+	<table style="width:100%" id="contact">
+		<tr>
+			<td style="width:50%"><img src="image/location.png" style="width:100%; height:250%;" alt="AZoom locations">
+			</td>
+			<td style="width:50%; text-align: center;">
+				<h1>
+					Find Us
+				</h1>
+				<p>
+					azoom@gmail.com<br>
+					+65 61234567
+				</p>
+				<h4>Rent and Return Car</h4>
+				<address>
+					5 Orchard, <br>
+					#01-28 AZoom building, <br>
+					Singapore 529482 <br>
+				</address><br>
+				<address>
+					8 Outram, <br>
+					#01-00 AZoom Building,<br>
+					Singapore 317778<br>
+				</address>
+			</td>
+		</tr>
+	</table>
+	<br><br><br><br>
+
+	<!-- FAQ -->
+	<div style="height:400px;" id="faq">
+		<h1 style="text-align:center;">FAQ</h1>
+		<table class="faq" style="width:100%">
+			<tr>
+				<th>
+					What are the pick-up times for the vehicles?
+				</th>
+				<th>
+					Are there any extra fees?
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Our office is open 24/7. When reserving a car, you can choose the pick-up time.</label>
+				</td>
+				<td>
+					During the inspection, any damages to the car may result in an additional charge on top of the
+					rental period.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th>
+					How long in advance do I need to book a vehicle?
+				</th>
+				<th>
+					What are the payment procedures?
+				</th>
+			</tr>
+			<tr>
+				<td>
+					If cars are available, you can book and use the vehicle on the spot.
+				</td>
+				<td>
+					After our mandatory inspection, you can make full payment for the car rental and damages (if any).
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<footer>
+		<i>&copy; AZoom Car Rental, 2022</i><br>
+	</footer>
+</body>
+
+</html>

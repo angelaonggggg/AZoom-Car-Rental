@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+	<meta charset="utf-8">
+	<title>AZoom Car Rental</title>
+	<link rel="stylesheet" href="AZoomStyles.css">
+</head>
+
+<body>
+	<script src="AZoomScript.js"></script>
+	<!-- Navigation Bar -->
+	<h1 style="text-align:center;" id="home">Welcome back to AZoom Car Rental!</h1>
+	<hr style="background-color:black">
+	<div class="navbar">
+		<a href="index.html">Logout</a>
+		<a href="#faq">FAQ</a>
+		<a href="#contact">Contact</a>
+		<a href="#aboutUs">About Us</a>
+		<a href="#payment" onclick="openInvoice()">Payment</a>
+		<a href="#transaction">Transaction</a>
+		<a href="#start">Start Journey</a>
+		<a href="#home">
+			<img src="image/AZoom.jpg" alt="AZoom" style="width:75px;height:50px;">
+		</a>
+	</div>
+
+	<!-- Slideshow for the car  -->
+	<img id="photo" src="image/electricCar.png" alt="car" class="center" />
+	<script>
+		slideShow();
+	</script>
+	<br>
+	<h1>WHY CHOOSE AZOOM?</h1>
+	<div class="logo">
+		<table>
+			<tr>
+				<td>
+					<img src="image/fast.png" alt="Fast and easy booking">
+				</td>
+				<td>
+					<img src="image/noDeposit.png" alt="No Deposit">
+				</td>
+				<td>
+					<img src="image/environment.png" alt="Environment Conscious">
+				</td>
+			</tr>
+			<br>
+			<tr>
+				<td>
+					<h3>Fast and easy booking</h3>
+				</td>
+				<td>
+					<h3>No Deposit</h3>
+				</td>
+				<td>
+					<h3>Environment Conscious</h3>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- Choose a car section -->
+	<h1 id="start">START YOUR JOURNEY</H1>
+	<div class="vehicle-container">
+		<h2>Choose a vehicle</h2>
+		<form method="post">
+			<div class="filter-container">
+				<label for="vehicleType">Vehicle Type:</label>
+				<select id="vehicleType" name="vehicleType" onchange="filterCars()">
+					<option value="all">All</option>
+					<option value="SUV">SUV</option>
+					<option value="Sedan">Sedan</option>
+					<option value="Sports">Sports</option>
+					<option value="Hatchback">Hatchback</option>
+				</select>
+
+				<label for="priceRange">Price Range:</label>
+				<select id="priceRange" onchange="filterCars()">
+					<option value="all">All</option>
+					<option value="200-299">$200 - $299</option>
+					<option value="300-399">$300 - $399</option>
+					<option value="300-399">$400 - $499</option>
+				</select>
+			</div>
+			<br>
+
+			<div class="row">
+				<div class="column">
+					<button type="button" data-car="Hyundai Kona EV" data-car-type="SUV" data-car-price="220"
+						onclick="selectCar('Hyundai Kona EV')">
+						<img src="image/carKonaElectric.png" alt="Hyundai Kona EV">
+
+
+						<h3>Hyundai Kona EV</h3>
+						<p>
+							<strong>Price:</strong> $220/day<br>
+							<strong>Vehicle Type: </strong>SUV<br>
+							<strong>Category: </strong>Standard EV<br><br>
+
+							<strong>Capacity: </strong>5 <br>
+							<strong>Drive Range: </strong>305km<br>
+							<strong>Battery Capacity: </strong>39.2 kWh
+						</p>
+					</button>
+					<br>
+					<button type="button" data-car="Tesla Model 3" data-car-type="Sedan" data-car-price="300"
+						onclick="selectCar('Tesla Model 3')">
+						<img src="image/carTesla.png" alt="Tesla Model 3">
+						<h3>Tesla Model 3</h3>
+						<p>
+							<strong>Price: </strong>$300/day<br>
+							<strong>Vehicle Type:</strong> Sedan<br>
+							<strong>Category: </strong>Standard EV<br><br>
+
+							<strong>Capability</strong> 5 <br>
+							<strong>Drive Range: </strong>491km<br>
+							<strong>Battery Capacity: </strong> 60kWh
+						</p>
+					</button>
+				</div>
+				<div class="column">
+					<button type="button" data-car="Porsche Taycan" data-car-type="Sports" data-car-price="350"
+						onclick="selectCar('Porsche Taycan')">
+						<img src="image/carPorsche.png" alt="Porsche Taycan">
+						<h3>Porche Taycan</h3>
+						<p>
+							<strong>Price:</strong> $350/day<br>
+							<strong>Vehicle Type: </strong>Sports<br>
+							<strong>Category: </strong>Premium Plus EV<br><br>
+
+							<strong>Capacity: </strong>4<br>
+							<strong>Drive Range: </strong>434km<br>
+							<strong>Battery Capacity: </strong>79kWh
+						</p>
+					</button>
+					<br>
+					<button type="button" data-car="BYD e6" data-car-type="Hatchback" data-car-price="220"
+						onclick="selectCar('BYD e6')">
+						<img src="image/carBYD-all-new-e6.png" alt="BYD e6">
+						<h3>BYD e6</h3>
+						<p>
+							<strong>Price: </strong>$220/day<br>
+							<strong>Vehicle Type: </strong>Hatchback<br>
+							<strong>Category: </strong>Standard EV<br><br>
+
+							<strong>Capacity: </strong>5<br>
+							<strong>Drive Range: </strong>522km<br>
+							<strong>Battery Capacity: </strong>71.7kWh
+						</p>
+					</button>
+				</div>
+				<div class="column">
+					<button type="button" data-car="MG ZS EV" data-car-type="SUV" data-car-price="220"
+						onclick="selectCar('MG ZS EV')">
+						<img src="image/carMGZSEV.png" alt="MG ZS EV">
+							<h3>MG ZS EV</h3>
+							<p>
+								<strong>Price:</strong> $220/day<br>
+								<strong>Vehicle Type: </strong>SUV<br>
+								<strong>Category: </strong>Standard EV<br><br>
+
+								<strong>Capacity: </strong>5<br>
+								<strong>Drive Range: </strong>335km<br>
+								<strong>Battery Capacity: </strong>44.5kWh
+							</p>
+					</button>
+					<br>
+				</div>
+			</div>
+
+			<br><br>
+
+			<div class="journey">
+				<table>
+					<tr>
+						<th style="text-align: center;">Pick Up</th>
+						<th style="text-align: center;">Your Information</th>
+						<th style="text-align: center;">Credit Card</th>
+					</tr>
+					<tr>
+						<!-- PICK UP LOCATION -->
+						<td>
+							<b>Pickup Location: </b><br>
+							<select name="pickup">
+								<option value="Orchard">Orchard</option>
+								<option value="Outram">Outram</option>
+							</select>
+							<br><br>
+							<b>Dropoff Location</b><br>
+							<select name="dropoff">
+								<option value="Orchard">Orchard</option>
+								<option value="Outram">Outram</option>
+							</select>
+							<br>
+							<br>
+							<b>Rental Date:</b>
+							<input type="date" id="rentDate" name="rentDate">
+							<br><br>
+
+							<b>Rental time:</b>
+							<input type="time" id="rentTime" name="rentTime">
+
+							<br><br>
+							<b>Return Date:</b>
+							<input type="date" id="returnDate" name="returnDate">
+						</td>
+						<!-- INFORMATION -->
+						<td>
+							<b>First Name</b>&emsp;&ensp;&ensp;&nbsp;
+							<input type="text" id="firstName" name="firstName" size="15">
+							<br><br>
+							<b>Last Name</b>&emsp;&emsp;&nbsp;
+							<input type="text" id="lastName" name="lastName" size="15">
+							<br><br>
+							<b>Phone Number</b>&nbsp;
+							<input type="tel" id="phone" name="phone" size="15"  autocomplete="tel"><br><br>
+							<b>Email</b>&nbsp;
+							<input type="text" id="email" name="email" size="15" autocomplete="tel"><br><br>
+
+						</td>
+
+						<!-- CREDIT CARD DETAIL -->
+						<td>
+							<input type="radio" id="visaCheckbox" name="cardType" value="v">
+							<b>Visa</b>
+							<br>
+							<input type="radio" id="masterCheckbox" name="cardType" value="m">
+							<b>Master</b>
+							<br>
+							<br>
+							<b>Card number</b><br>
+							<input type="text" id="card" name="card" size="30">
+							<span id="cardError"></span>
+							<br>
+							<br>
+							<div class="expiry-container">
+								<b>Expiry date</b>
+								<input type="text" id="expiryMonth" placeholder="MM" name="expiryMonth" size="2"
+									maxlength="2">
+								/
+								<input type="text" id="expiryYear" placeholder="YY" name="expiryYear" size="2"
+									maxlength="2">
+								<br><br>
+								<b>CVC</b>
+								<br>
+								<input type="text" id="CVC" placeholder="CVC" name="CVC" size="3">
+							</div>
+							<br>
+							<br>
+							<input type="checkbox" id="privacy" name="privacy">
+							I have read and agree to
+							<button class="privacy-button" onclick="openPrivacyForm()">
+								<u>AZoom's Privacy Policy</u>
+							</button>
+							<div class="privacy-popup && privacy-container" id="privacyForm">
+								<h3>AZoom's Privacy Policy</h3>
+								<br>
+								<ul>
+									<li>
+										AZoom Car Rental are committed to protecting and respecting your privacy and
+										personal data. This privacy policy (“Policy”) sets out our collection, use,
+										disclosure and retention of your data.
+									</li>
+
+									<li>
+										By keying in your credit card detail, you will only be charged after AZoom's
+										employees have inspected the returned car to ensure there are no damages.
+									</li>
+
+									<li>
+										By using this website or otherwise providing your data to us, you hereby
+										acknowledge that you have read this Policy and that you consent to the
+										collection,
+										use and disclosure of your data for the purposes and in the manner set out in
+										this Policy.
+										If you do not consent to the terms of this Policy, please do not access this
+										website
+									</li>
+								</ul>
+								<br>
+								<button type="button" class="btn cancel" onclick="closePrivacyForm()">
+									Close
+								</button>
+							</div>
+							<br><br>
+							<button type="button" class="submitButton" onclick="transactionFunction()">
+								Submit
+							</button>
+
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+	<br id="transaction"><br>
+	<h1>Transactions</h1>
+	<div class="transaction">
+		<table style="border-radius: 10px;">
+			<tr>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Vehicle</th>
+				<th>Status</th>
+				<th>Price</th>
+			</tr>
+			<tr>
+				<td><span id="rent"></span></td>
+				<td><span id="return"></span></td>
+				<td>
+					<div id="carResult"></div>
+				</td>
+				<td><span id="status"></span></td>
+				<td><span id="price"></span></td>
+			</tr>
+			<tr>
+				<td>2022-20-10</td>
+				<td>2022-20-10</td>
+				<td>Tesla Model 3</td>
+				<td><span id="completed">Please make a payment</span></td>
+				<td>$640</td>
+			</tr>
+			<tr>
+				<td>2022-01-12</td>
+				<td>2022-01-20</td>
+				<td>Hyundai Kona EV</td>
+				<td>Completed</td>
+				<td>$1760</td>
+			</tr>
+		</table>
+	</div>
+	<br id="payment">
+	<button type="button" class="getPaymentButton" onclick="openInvoice()">
+		Get payment slip
+	</button>
+	<br>
+	<!-- Get payment slip -->
+	<div class="invoicePopup" id="invoiceForm"
+		style="border:1px solid white; background-color: lightgrey; color:black;">
+		<header style="text-align: center;">
+			<img src="AZoom.jpg" alt="AZoom logo" width="100px" height="75px">
+			<h2 style="margin-top: 10px;">AZoom Car Rental</h2>
+			<p style="margin-bottom: 5px;">Email: azoom@gmail.com | Phone: +65 6123-4567</p>
+			<address style="margin-bottom: 10px;">
+				5 Orchard, #01-28 AZoom building,<br>
+				Singapore 529482
+			</address>
+
+			<!-- Invoice To Information -->
+			<div style="border-top: 1px solid #000; padding-top: 10px; margin-top: 20px;">
+				<strong>Invoice To:</strong> Jason Tan<br>
+				<strong>Email:</strong> jason@gmail.com<br>
+			</div>
+			<br>
+		</header>
+		<table class="invoicePrice" style="width:80%; border:1px solid black; margin: 0 auto; border-radius: 10px;">
+			<tr>
+				<th colspan="3">Invoice Slip 5230</th>
+			</tr>
+			<tr>
+				<td colspan="3"></td>
+			</tr>
+			<tr>
+				<th>Details</th>
+				<th>Duration</th>
+				<th>Amount</th>
+			</tr>
+			<tr>
+				<td>Tesla Model 3</td>
+				<td>1 day, 20 Oct 2022</td>
+				<td>$300</td>
+			</tr>
+			<tr>
+				<th>Details</th>
+				<th>Any damages</th>
+				<td>$200</td>
+			</tr>
+			<tr>
+				<td>Roof</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Bumper</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Body panel</td>
+				<td>Damaged</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Glass</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>Tires</td>
+				<td>Damaged</td>
+				<td></td>
+			</tr>
+			<!-- Total -->
+			<tr>
+				<td colspan="2"></td>
+				<th style="padding: 10px; text-align: right;">Subtotal:</th>
+				<td>$500</td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<th style="padding: 10px; text-align: right;">GST:</th>
+				<td>$140</td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<th style="padding: 10px; text-align: right; font-size: 25px;">TOTAL: </th>
+				<th style="font-size: 25px;">$640</th>
+			</tr>
+			<tr>
+				<td>Thank you for choosing AZoom</td>
+			</tr>
+			<tr>
+				<td>
+					Computer generated. No signature required.
+				</td>
+			</tr>
+		</table>
+		<br>
+		<button type="button" class="getPaymentButton" onclick="openPayment()">
+			PAY NOW
+		</button>
+		<br>
+
+		<div class="paymentPopup" id="paymentForm">
+			<div class="verification-container">
+				<div class="title">Enter Verification Code</div>
+				<div class="subtitle">A verification code has been sent to your phone number</div>
+				<div class="input-container">
+					<label for="otpInput">Enter OTP:</label>
+					<input type="text" id="otpInput" class="otp-input">
+				</div>
+				<div class="button-container">
+					<button type="button" class="submitButton" onclick="closePayment()">Verify</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+
+	<!-- About us section -->
+	<table style="width:100%" id="aboutUs">
+		<tr>
+			<td style="width:50%; text-align: center;">
+				<h1>
+					About AZoom Car Rental
+				</h1>
+				<p>
+					AZoom is a local car rental company that specialized in renting electric cars.<br>
+					There is a range of electric cars available for environmentally conscious customers.<br>
+					Start your journey by registering with us and rent our cars.<br>
+					Our cars are always available 24/7.<br>
+				</p>
+			</td>
+			<td style="width:50%"><img style="width:100%; height:150%;" src="image/aboutUs.png" alt="About Us">
+			</td>
+		</tr>
+	</table>
+	<br id="contact"><br>
+
+	<!-- Contact US -->
+	<table style="width:100%">
+		<tr>
+			<td style="width:50%;"><img src="image/location.png" style="width:100%; height:250%;" alt="AZoom locations">
+			</td>
+			<td style="width:50%; text-align: center;">
+				<h1>
+					Find Us
+				</h1>
+				<p>
+					azoom@gmail.com<br>
+					+65 6123-4567
+				</p>
+				<br>
+				<h3 style="color: gold;">Rent and Return Car</h3>
+				<address>
+					5 Orchard, <br>
+					#01-28 AZoom building, <br>
+					Singapore 529482 <br>
+				</address><br>
+				<address>
+					8 Outram, <br>
+					#01-00 AZoom Building,<br>
+					Singapore 317778<br>
+				</address>
+			</td>
+		</tr>
+	</table>
+	<br><br><br><br>
+
+	<!-- FAQ -->
+	<div style="height:400px;" id="faq">
+		<h1 style="text-align:center;">FAQ</h1>
+		<table class="faq" style="width:100%">
+			<tr>
+				<th>
+					What are the pick-up times for the vehicles
+				</th>
+				<th>
+					Are there any extra fees
+				</th>
+			</tr>
+			<tr>
+				<td>
+					Our office is open 24/7. When reserving a car, you can choose the pick-up time.
+				</td>
+				<td>
+					During the inspection, any damages to the car may result in an additional charge on top of the
+					rental period.
+				</td>
+			</tr>
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<th>
+					How long in advance do I need to book a vehicle?
+				</th>
+				<th>
+					What are the payment procedures?
+				</th>
+			</tr>
+			<tr>
+				<td>
+					If cars are available, you can book and use the vehicle on the spot.
+				</td>
+				<td>
+					After our mandatory inspection, you can make full payment for the car rental and damages (if any).
+				</td>
+			</tr>
+		</table>
+	</div>
+	<footer>
+		<i>&copy; AZoom Car Rental, 2022</i><br>
+	</footer>
+</body>
+
+</html>

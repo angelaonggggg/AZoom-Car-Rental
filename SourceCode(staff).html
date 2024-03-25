@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+
+<head>
+	<meta charset="utf-8">
+	<title>AZoom Car Rental</title>
+	<link rel="stylesheet" href="AZoomStyles.css">
+</head>
+
+<body onload="currentDate()">
+	<script src="AZoomScript.js"></script>
+	<h1 style="text-align:center;" id="home">AZoom Car Rental Staff Page</h1>
+	<hr style="background-color:black">
+
+	<div class="navbar">
+		<a href="index.html">Logout</a>
+
+		<a href="#inspect">Inspect</a>
+		<a href="#home">
+			<img src="image/AZoom.jpg" alt="AZoom" style="width:75px;height:50px;">
+		</a>
+	</div>
+
+	<br id="inspect"><br>
+	<!-- VEHICLE REPORT -->
+	<form>
+		<h1>INSPECTION</h1>
+		<h3 style="color:gold">Vehicle Damage Assessment Report</h3>
+			<h4>Payment Slip 5120</h4>
+
+			<table>
+				<tr>
+					<td>
+						Date of assessment:
+					</td>
+					<td>
+						<input type="text" size="20" id="dateToday" name="date" readonly>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						Car Plate:
+					</td>
+					<td>
+						<input type="text" size="20" id="carPlate" name="carPlate">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Car Type:
+					</td>
+				</tr>
+			</table>
+			<div class="row">
+				<div class="column">
+					<img src="image/carKonaElectric.png" alt="Hyundai Kona EV">
+					<input type="radio" name="carType" value="Hyundai Kona EV">
+					<b>Hyundai Kona EV</b>
+					<img src="image/carTesla.png" alt="Tesla Model 3">
+					<input type="radio" name="carType" value="Tesla Model 3">
+					<b>Tesla Model 3</b>
+				</div>
+				<div class="column">
+					<img src="image/carPorsche.png" alt="Porche Taycan">
+					<input type="radio" name="carType" value="Porche Taycan">
+					<b>Porche Taycan</b>
+					<img src="image/carBYD-all-new-e6.png" alt="BYD e6">
+					<input type="radio" name="carType" value="BYD e6">
+					<b>BYD e6</b>
+				</div>
+				<div class="column">
+					<img src="image/carMGZSEV.png" alt="MG ZS EV">
+					<input type="radio" name="carType" value="MG ZS EV">
+					<b>MG ZS EV</b>
+				</div>
+			</div>
+
+			<br><br>
+			Choose damages:<br>
+			<input type="checkbox" id="roof" name="carDefect" value="roof" onclick="checkRoof()">Roof
+			<br>
+			<input type="checkbox" id="bumper" name="carDefect" value="bumper" onclick="checkBumper()">Bumper
+			<br>
+			<input type="checkbox" id="panel" name="carDefect" value="panel" onclick="checkPanel()">Body panel
+			<br>
+			<input type="checkbox" id="glass" name="carDefect" value="glass" onclick="checkGlass()">Glass
+			<br>
+			<input type="checkbox" id="tires" name="carDefect" value="tires" onclick="checkTires()">Tires
+			<br><br>
+
+			<img src="image/inspect.png" alt="A photo of a detailed car inspection" class="center" style="width:50%">
+			<br>
+
+			Remarks:
+			<input type="text" id="remarks" name="remarks" size="30">
+			<br><br>
+			<button type="button" class="Button" onclick="invoiceFunction()">
+				Generate customer's payment slip
+			</button>
+	</form>
+	<br>
+
+	<!-- Generate Invoice -->
+	<div class="invoicePopup" id="invoiceForm"
+		style="border:1px solid white; background-color: lightgrey; color:black;">
+		<header style="text-align: center;">
+			<img src="AZoom.jpg" alt="AZoom logo" width="100px" height="75px">
+			<h2 style="margin-top: 10px;">AZoom Car Rental</h2>
+			<p style="margin-bottom: 5px;">Email: azoom@gmail.com | Phone: +65 61234567</p>
+			<address style="margin-bottom: 10px;">
+				5 Orchard, #01-28 AZoom building,<br>
+				Singapore 529482
+			</address>
+
+			<!-- Invoice To Information -->
+			<div style="border-top: 1px solid #000; padding-top: 10px; margin-top: 20px;">
+				<strong>Invoice To:</strong> Tony Stark<br>
+				<strong>Email:</strong> tony@gmail.com<br>
+			</div>
+			<br>
+		</header>
+
+		<table class="invoicePrice" style="width:80%; border:1px solid black; margin: 0 auto; border-radius: 10px;">
+			<tr>
+				<th colspan="3">Invoice Slip 5120</th>
+			</tr>
+			<tr>
+				<td colspan="3"></td>
+			</tr>
+			<tr>
+				<th>Details</th>
+				<th>Duration</th>
+				<th>Amount</th>
+			</tr>
+			<tr>
+				<td>
+					<div id="carResult"></div>
+				</td>
+				<td>2 days, 23 Oct - 24 Oct 2022</td>
+				<td>$440</td>
+			</tr>
+			<tr>
+				<td colspan="3">&nbsp;</td>
+			</tr>
+			<tr>
+				<th>Details</th>
+				<th>Any damages</th>
+				<td>$500</td>
+			</tr>
+			<tr>
+				<td>
+					Roof
+				</td>
+				<td>
+					<span id="roofText" style="display:none">Damaged</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Bumper
+				</td>
+				<td>
+					<span id="bumperText" style="display:none">Damaged</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Body panel
+				</td>
+				<td>
+					<span id="panelText" style="display:none">Damaged</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Glass
+				</td>
+				<td>
+					<span id="glassText" style="display:none">Damaged</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Tires
+				</td>
+				<td>
+					<span id="tiresText" style="display:none">Damaged</span>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<th style="padding: 10px; text-align: right;">Subtotal:</th>
+				<td>$940</td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<th style="padding: 10px; text-align: right;">GST:</th>
+				<td>$130</td>
+			</tr>
+			<tr>
+				<td colspan="2"></td>
+				<th style="padding: 10px; text-align: right; font-size: 25px;">TOTAL: </th>
+				<th style="font-size: 25px;">$1070</th>
+			</tr>
+			<tr>
+				<td colspan="3">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>Thanks for choosing us</td>
+			</tr>
+			<tr>
+				<td>
+					Computer generated. No signature required.
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<br>
+	<button type="button" class="Button" id="send" onclick="message()">
+		Send to customer
+	</button>
+
+	<button type="button" class="Button" onclick="location.reload();">
+		Assess next vehicle
+	</button>
+
+	<br>
+	<footer>
+		<i>&copy; AZoom Car Rental, 2022</i><br>
+	</footer>
+</body>
+
+</html>

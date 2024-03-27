@@ -23,7 +23,9 @@ Staff Features:
 
 **Technologies used**
 
-- HTML, CSS, Javascript.
+- HTML
+- CSS
+- JavaScript
 
 **Media**
 
@@ -32,8 +34,8 @@ Staff Features:
 **Installation**
 
 To run the project locally, follow these steps:
-- On GitHub.com, navigate to the main page of the repository.
-- Above the list of files, click Code.
-- Click Download ZIP.
-- Extract folder and navigate to the index.html file.
-- Open index.html in a web browser to view the website.
+1. On GitHub.com, navigate to the main page of the repository.
+2. Above the list of files, click "Code."
+3. Click "Download ZIP."
+4. Extract the folder and navigate to the `index.html` file.
+5. Open `index.html` in a web browser to view the website.

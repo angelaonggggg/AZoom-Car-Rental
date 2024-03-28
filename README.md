@@ -11,13 +11,13 @@ https://azoom-e6f4e.web.app
 
 Customer Features:
 
-- Customer Login: Customers can log in using the provided credentials (username: cust, password: Customer).
+- Customer Login: Customers can log in using the provided credentials `username: cust, password: Customer`.
 - Vehicle Listings: Customers can browse available vehicles, including details such as price, capacity, and battery range.- 
 - Booking Management: Customers can make bookings for their desired vehicles.
 
 Staff Features:
 
-- Staff Login: Staff members can log in using the provided credentials (username: Azoom, password: AZoom).
+- Staff Login: Staff members can log in using the provided credentials `username: Azoom, password: AZoom`.
 - Vehicle Inspection: Staff can inspect vehicles before and after customer rentals.
 - Transaction Management: Staff can manage customer transactions, including billing and payment processing.
 
